@@ -29,7 +29,9 @@ function createList() {
     //Loop through each show and generate li
     .forEach((show, index) => {
       const li = document.createElement('li');
+
       li.setAttribute('data-index', index);
+
       li.innerHTML = `
     <span class="number">${index + 1}</span>
     <div class="draggable" draggable="true">
