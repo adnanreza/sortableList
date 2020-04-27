@@ -73,12 +73,26 @@ function dragDrop() {
   this.classList.remove('over');
 }
 
+// Swap list items
 function swapItems(fromIndex, toIndex) {
   const itemA = listItems[fromIndex].querySelector('.draggable');
   const itemB = listItems[toIndex].querySelector('.draggable');
   //Swap items
   listItems[fromIndex].appendChild(itemB);
   listItems[toIndex].appendChild(itemA);
+}
+
+// Check order of list items
+function checkOrder() {
+  listItems.forEach((li, index) => {
+    const showName = li.querySelector('.draggable').innerText.trim();
+    if (showName !== tvShows[index]) {
+      li.classList.add('wrong');
+    } else {
+      li.classList.remove('wrong');
+      li.classList.add('right');
+    }
+  });
 }
 
 function addEventListeners() {
@@ -96,3 +110,5 @@ function addEventListeners() {
     li.addEventListener('dragleave', dragLeave);
   });
 }
+
+checkBtn.addEventListener('click', checkOrder);
